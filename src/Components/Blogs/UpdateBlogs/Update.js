@@ -19,17 +19,17 @@ const Update = () => {
             });
     }, [id]);
 
-    console.log(description)
-
     const textData = (event, editor) => {
         const data = editor.getData();
         setDescription(data);
-        const updateDescription = description;
-        const updateBlogs = { ...details }
-        updateBlogs.description = updateDescription
-        setDetails(updateBlogs)
     }
 
+    const updateDescriptionHandler = () => {
+        const updateDescription = description;
+        const updateBlogs = { ...details };
+        updateBlogs.description = updateDescription;
+        setDetails(updateBlogs);
+    }
 
     const updateTitleHandler = (event) => {
         const updateTitle = event.target.value;
@@ -94,13 +94,14 @@ const Update = () => {
 
                 <Form.Group className="mb-3" controlId="Author">
                     <Form.Label>Author</Form.Label>
-                    <Form.Control onChange={updateAuthorHandler} value={details.author} type="text" placeholder="Enter Author" />
+                    <Form.Control onbl onChange={updateAuthorHandler} value={details.author} type="text" placeholder="Enter Author" />
                 </Form.Group>
 
                 <CKEditor
                     editor={ClassicEditor}
-                    data={details.description}
+                    data={details?.description}
                     onChange={textData}
+                    onBlur={updateDescriptionHandler}
 
                 >
                 </CKEditor> <br />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import './Details.css'
 
 const Details = () => {
     const [details, setDetails] = useState({});
